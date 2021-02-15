@@ -29,8 +29,7 @@ somente a conta PF tem permissão de transferência.
 + suba os containers: `docker-compose up --build -d`
 + acesse a image: `docker exec -it php /bin/sh` ou `docker exec -it php
   bash`
-+ dentro da imagem, execute para adicionar as dependências
-de exemplo: `composer update`
++ dentro da imagem, execute para adicionar as dependências: `composer update`
 + dentro da imagem, execute para criar as tabelas e adicionar os seeds
   de exemplo: `php artisan migrate:fresh --seed`
 + utilize o comando para rodar os testes: `./vendor/bin/pphunit`
