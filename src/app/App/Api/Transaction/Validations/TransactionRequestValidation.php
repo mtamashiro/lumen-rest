@@ -21,7 +21,7 @@ class TransactionRequestValidation
             throw new ModelNotFoundException('Payee not exist');
         }
 
-        if( $request->payee == $request->payer){
+        if($request->payee == $request->payer){
             throw new InvalidArgumentException('payer cannot be the payee');
         }
 
