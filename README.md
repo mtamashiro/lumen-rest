@@ -23,6 +23,9 @@ somente a conta PF tem permissão de transferência.
   
 ### Rodando o projeto
 
++ Clone o repositório utilizando `git clone --depth=1
+  https://github.com/mtamashiro/lumen-rest.git`
++ Acesse a pasta do projeto `cd lumen-rest`
 + suba os containers: `docker-compose up --build -d`
 + acesse a image: `docker exec -it php /bin/sh` ou `docker exec -it php
   bash`
