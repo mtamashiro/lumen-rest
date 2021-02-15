@@ -82,5 +82,18 @@ class transactionRoutesTest extends TestCase
 
         $response = $this->call('POST', '/api/transaction', $transfer);
         $this->assertEquals(403, $response->status());
+
+        $transfer = [
+            'value' => 100,
+            'payer' => $naturalPersonPayer->person->id,
+            'payee' => $naturalPersonPayer->person->id,
+        ];
+
+        $account = Account::where('user_id', $naturalPersonPayer->person->id)->first();
+        $account->amount = 100;
+        $account->save();
+
+        $response = $this->call('POST', '/api/transaction', $transfer);
+        $this->assertEquals(422, $response->status());
     }
 }

@@ -21,6 +21,10 @@ class TransactionRequestValidation
             throw new ModelNotFoundException('Payee not exist');
         }
 
+        if($request->payee == $request->payer){
+            throw new InvalidArgumentException('payer cannot be the payee');
+        }
+
         if(!is_numeric($request->value) ){
             throw new InvalidArgumentException('Incorrect value field format');
         }else{
