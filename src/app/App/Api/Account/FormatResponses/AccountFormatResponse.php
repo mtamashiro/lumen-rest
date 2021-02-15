@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Api\Account\FormatResponse;
+namespace App\Api\Account\FormatResponses;
 
 
 use Domain\Account\Models\Account;
