@@ -95,5 +95,6 @@ class transactionRoutesTest extends TestCase
 
         $response = $this->call('POST', '/api/transaction', $transfer);
         $this->assertEquals(422, $response->status());
+        
     }
 }
