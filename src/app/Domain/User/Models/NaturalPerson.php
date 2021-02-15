@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Domain\User\models;
+namespace Domain\User\Models;
 
 use Domain\Person\models\Person;
 use Illuminate\Database\Eloquent\Model;
