@@ -33,7 +33,7 @@ somente a conta PF tem permissão de transferência.
 de exemplo: `composer update`
 + dentro da imagem, execute para criar as tabelas e adicionar os seeds
   de exemplo: `php artisan migrate:fresh --seed`
-+ utilize o comando para rodar os testes: `.\vendor\bin\pphunit`
++ utilize o comando para rodar os testes: `./vendor/bin/pphunit`
 
 ### Documentação da API
 
