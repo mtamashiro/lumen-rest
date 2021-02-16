@@ -70,10 +70,6 @@ Laravel para definir qual o tipo de usuário de acordo com seu documento.
 
 ### Dívida técnica
 
-+ Apesar dessa estrutura proposta pelo Brent Roose separar a aplicação
-  do domínio, o domínio em si possui muita depedência do *Eloquent* do 
-  Laravel. O ideal seria proteger o domínio criado uma camada 
-  de repositório e removendo o ORM da camada de domínio.
 + Para esse projeto não foram criadas *enviroments* para teste ou produção.  
 + Necessário ter um entendimento melhor sobre o domínio do negócio para 
 criar uma linguagem ubíqua mais adequada.
