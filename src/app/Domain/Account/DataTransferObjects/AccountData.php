@@ -3,7 +3,6 @@
 
 namespace Domain\Account\DataTransferObjects;
 
-
 use Spatie\DataTransferObject\DataTransferObject;
 
 class AccountData extends DataTransferObject

@@ -3,10 +3,9 @@
 
 namespace Domain\Transaction\Policy;
 
-
 use Domain\User\Models\User;
 
-Interface UserPermissionPolicyInterface
+interface UserPermissionPolicyInterface
 {
     public function isTransferAllowed(User $user) : bool;
 }

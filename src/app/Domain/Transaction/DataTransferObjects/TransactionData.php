@@ -3,7 +3,6 @@
 
 namespace Domain\Transaction\DataTransferObjects;
 
-
 use Spatie\DataTransferObject\DataTransferObject;
 
 class TransactionData extends DataTransferObject

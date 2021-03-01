@@ -3,7 +3,6 @@
 
 namespace Domain\Transaction\States;
 
-
 use Domain\Account\Actions\DepositAction;
 use Domain\Account\Actions\WithdrawAction;
 use Domain\Account\DataTransferObjects\AccountData;
@@ -29,15 +28,14 @@ class AuthorizedTransaction extends TransactionStates
         $depositAction = new DepositAction($accountPayeeData);
         $depositAction->execute($transaction->amount);
 
-        try{
+        try {
             DB::commit();
             $transaction->state->transitionTo(CompletedTransaction::class);
             return $transaction->state->execute($transaction);
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             DB::rollBack();
             $transaction->state->transitionTo(FailedTransaction::class);
             return $transaction->state->execute($transaction);
         }
-
     }
 }

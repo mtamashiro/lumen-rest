@@ -1,11 +1,9 @@
 <?php
 
-
 namespace Domain\User\Models;
 
 use Domain\Person\models\Person;
 use Illuminate\Database\Eloquent\Model;
-
 
 class NaturalPerson extends Model
 {

@@ -3,7 +3,6 @@
 
 namespace Domain\Account\Actions;
 
-
 use Domain\Account\Models\Account;
 use Domain\Account\DataTransferObjects\AccountData;
 
@@ -11,7 +10,8 @@ class DepositAction
 {
     private $accountData;
 
-    public function __construct(AccountData $accountData){
+    public function __construct(AccountData $accountData)
+    {
         $this->accountData = $accountData;
     }
 

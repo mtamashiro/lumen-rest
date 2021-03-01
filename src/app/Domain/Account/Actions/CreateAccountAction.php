@@ -3,7 +3,6 @@
 
 namespace Domain\Account\Actions;
 
-
 use Domain\Account\DataTransferObjects\AccountData;
 use Domain\Account\Models\Account;
 
@@ -24,6 +23,5 @@ class CreateAccountAction
         ]);
 
         return $account;
-
     }
 }

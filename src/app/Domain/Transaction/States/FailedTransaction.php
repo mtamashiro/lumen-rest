@@ -3,7 +3,6 @@
 
 namespace Domain\Transaction\States;
 
-
 use Domain\Transaction\Models\Transaction;
 
 class FailedTransaction extends TransactionStates

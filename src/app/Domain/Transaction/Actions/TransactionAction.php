@@ -3,7 +3,6 @@
 
 namespace Domain\Transaction\Actions;
 
-
 use App\Core\Exceptions\CustomExceptions\NotAllowedAction;
 use Domain\Account\Models\Account;
 use Domain\Transaction\DataTransferObjects\TransactionData;
@@ -38,7 +37,5 @@ class TransactionAction
         } else {
             throw new NotAllowedAction('Juridical person is not allowed to perform this action');
         }
-
-
     }
 }

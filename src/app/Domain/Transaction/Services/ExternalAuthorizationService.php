@@ -15,9 +15,9 @@ class ExternalAuthorizationService
 
         $message = json_decode($res->getBody());
 
-        if($message->message === 'Autorizado'){
+        if ($message->message === 'Autorizado') {
             return true;
-        }else{
+        } else {
             return false;
         }
     }

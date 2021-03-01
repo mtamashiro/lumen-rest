@@ -3,7 +3,6 @@
 
 namespace Domain\Account\Models;
 
-
 use Domain\Transaction\Models\Transaction;
 use Domain\User\Models\User;
 use Illuminate\Database\Eloquent\Model;
