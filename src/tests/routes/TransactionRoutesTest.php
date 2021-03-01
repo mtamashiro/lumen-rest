@@ -1,17 +1,15 @@
 <?php
 
-use Laravel\Lumen\Testing\DatabaseMigrations;
-use Laravel\Lumen\Testing\DatabaseTransactions;
 use Domain\User\models\NaturalPerson;
 use Domain\Account\Models\Account;
 use Domain\User\models\JuridicalPerson;
 
 class transactionRoutesTest extends TestCase
 {
-    public function testTransactionDefaultRoute(){
+    public function testTransactionTransferSuccess()
+    {
         $naturalPersonPayer = NaturalPerson::all()->random(1)->first();
         $naturalPersonPayee = NaturalPerson::all()->random(1)->first();
-        $juridicalPerson = JuridicalPerson::all()->random(1)->first();
 
         $transfer = [
             'value' => 100.00,
@@ -25,6 +23,12 @@ class transactionRoutesTest extends TestCase
 
         $response = $this->call('POST', '/api/transaction', $transfer);
         $this->assertEquals(201, $response->status());
+    }
+
+    public function testTransactionTransferBlankvalue()
+    {
+        $naturalPersonPayer = NaturalPerson::all()->random(1)->first();
+        $naturalPersonPayee = NaturalPerson::all()->random(1)->first();
 
         $transfer = [
             'value' => '',
@@ -35,6 +39,11 @@ class transactionRoutesTest extends TestCase
         $response = $this->call('POST', '/api/transaction', $transfer);
 
         $this->assertEquals(422, $response->status());
+    }
+
+    public function testTransactionTransferInvalidPayer()
+    {
+        $naturalPersonPayee = NaturalPerson::all()->random(1)->first();
 
         $transfer = [
             'value' => 100,
@@ -43,23 +52,37 @@ class transactionRoutesTest extends TestCase
         ];
 
         $response = $this->call('POST', '/api/transaction', $transfer);
-
         $this->assertEquals(404, $response->status());
+    }
+
+
+    public function testTransactionTransferInvalidPayee()
+    {
+        $naturalPersonPayer = NaturalPerson::all()->random(1)->first();
 
         $transfer = [
             'value' => 100,
-            'payer' => $naturalPersonPayee->person->id,
+            'payer' => $naturalPersonPayer->person->id,
             'payee' => 'xxxxxxxxx'
         ];
 
         $response = $this->call('POST', '/api/transaction', $transfer);
 
         $this->assertEquals(404, $response->status());
+    }
+
+    public function testTransactionTransferBlankRequest()
+    {
         $transfer = [];
 
         $response = $this->call('POST', '/api/transaction', $transfer);
-
         $this->assertEquals(404, $response->status());
+    }
+
+    public function testTransactionTransferJuridicalPayerNotAllowed()
+    {
+        $juridicalPerson = JuridicalPerson::all()->random(1)->first();
+        $naturalPersonPayee = NaturalPerson::all()->random(1)->first();
 
         $transfer = [
             'value' => 100,
@@ -69,6 +92,12 @@ class transactionRoutesTest extends TestCase
 
         $response = $this->call('POST', '/api/transaction', $transfer);
         $this->assertEquals(403, $response->status());
+    }
+
+    public function testTransactionTransferInsufficientFunds()
+    {
+        $naturalPersonPayer = NaturalPerson::all()->random(1)->first();
+        $naturalPersonPayee = NaturalPerson::all()->random(1)->first();
 
         $transfer = [
             'value' => 100,
@@ -82,6 +111,11 @@ class transactionRoutesTest extends TestCase
 
         $response = $this->call('POST', '/api/transaction', $transfer);
         $this->assertEquals(403, $response->status());
+    }
+
+    public function testTransactionTransferToSameAccount()
+    {
+        $naturalPersonPayer = NaturalPerson::all()->random(1)->first();
 
         $transfer = [
             'value' => 100,
@@ -95,6 +129,6 @@ class transactionRoutesTest extends TestCase
 
         $response = $this->call('POST', '/api/transaction', $transfer);
         $this->assertEquals(422, $response->status());
-        
+
     }
 }
