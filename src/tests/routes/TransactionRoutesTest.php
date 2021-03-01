@@ -92,6 +92,7 @@ class transactionRoutesTest extends TestCase
 
         $response = $this->call('POST', '/api/transaction', $transfer);
         $this->assertEquals(403, $response->status());
+        echo $response->getContent();
     }
 
     public function testTransactionTransferInsufficientFunds()
