@@ -20,13 +20,13 @@ $router->group(['namespace' => '\App\Api\Transaction\Controllers', 'prefix' => '
 
 $router->group(['namespace' => '\App\Api\User\Controllers', 'prefix' => '/api'], function() use ($router)
 {
-    $router->get('user/{id}', 'UserController@show');
-    $router->post('user', 'UserController@store');
+    $router->get('users/{id}', 'UserController@show');
+    $router->post('users', 'UserController@store');
 });
 
 $router->group(['namespace' => '\App\Api\Account\Controllers', 'prefix' => '/api'], function() use ($router)
 {
-    $router->get('account/{id}', 'AccountController@show');
-    $router->post('account', 'AccountController@store');
+    $router->get('accounts/{id}', 'AccountController@show');
+    $router->post('accounts', 'AccountController@store');
 });
 

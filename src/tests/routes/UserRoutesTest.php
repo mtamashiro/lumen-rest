@@ -15,13 +15,13 @@ class userRoutesTest extends TestCase
     {
         $user = User::All()->first();
 
-        $response = $this->call('GET', '/api/user/' . $user->id);
+        $response = $this->call('GET', '/api/users/' . $user->id);
         $this->assertEquals(200, $response->status());
     }
 
     public function testGetUserRouteAlreadyExist()
     {
-        $response = $this->call('GET', '/api/user/2381380jdada0dsa9');
+        $response = $this->call('GET', '/api/users/2381380jdada0dsa9');
         $this->assertEquals(404, $response->status());
     }
 
@@ -34,7 +34,7 @@ class userRoutesTest extends TestCase
             "document" => 'ewqwewq',
             "password" => "dsadsadsadsadsa"
         ];
-        $response = $this->call('POST', '/api/user/', $request);
+        $response = $this->call('POST', '/api/users/', $request);
         $this->assertEquals(422, $response->status());
     }
 
@@ -48,7 +48,7 @@ class userRoutesTest extends TestCase
             "password" => "dsadsadsadsadsa"
         ];
 
-        $response = $this->call('POST', '/api/user/', $request);
+        $response = $this->call('POST', '/api/users/', $request);
         $this->assertEquals(422, $response->status());
     }
 
@@ -62,7 +62,7 @@ class userRoutesTest extends TestCase
             "password" => "dsadsadsadsadsa"
         ];
 
-        $response = $this->call('POST', '/api/user/', $request);
+        $response = $this->call('POST', '/api/users/', $request);
         $this->assertEquals(422, $response->status());
     }
 
@@ -75,7 +75,7 @@ class userRoutesTest extends TestCase
             "document" => self::VALID_CPF,
             "password" => "dsadsadsadsadsa"
         ];
-        $response = $this->call('POST', '/api/user/', $request);
+        $response = $this->call('POST', '/api/users/', $request);
         $this->assertEquals(201, $response->status());
     }
 
@@ -88,7 +88,7 @@ class userRoutesTest extends TestCase
             "password" => "dsadsadsadsadsa"
         ];
 
-        $response = $this->call('POST', '/api/user/', $request);
+        $response = $this->call('POST', '/api/users/', $request);
         $this->assertEquals(409, $response->status());
 
         $this->deleteUser();
