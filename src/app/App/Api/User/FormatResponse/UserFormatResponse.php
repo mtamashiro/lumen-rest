@@ -3,7 +3,6 @@
 
 namespace App\Api\User\FormatResponse;
 
-
 use Domain\User\models\NaturalPerson;
 use Domain\User\Models\User;
 

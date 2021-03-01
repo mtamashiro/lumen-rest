@@ -3,7 +3,6 @@
 
 namespace App\Api\Transaction\FormatResponse;
 
-
 use Domain\Transaction\Models\Transaction;
 use Domain\User\models\NaturalPerson;
 
@@ -34,5 +33,4 @@ class TransactionFormatResponse
             ]
         ]);
     }
-
 }

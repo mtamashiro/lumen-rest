@@ -3,7 +3,6 @@
 
 namespace App\Api\User\Validations;
 
-
 use App\Core\Exceptions\CustomExceptions\AlreadyExist;
 use Domain\User\models\JuridicalPerson;
 use Domain\User\models\NaturalPerson;
@@ -26,11 +25,11 @@ class UserRequestValidation
             throw new AlreadyExist('document is already registered');
         }
 
-        if(!ValidateDocuments::validateCPF($request->document) && !ValidateDocuments::validateCNPJ($request->document)){
+        if (!ValidateDocuments::validateCPF($request->document) && !ValidateDocuments::validateCNPJ($request->document)) {
             throw new InvalidArgumentException('Invalid Document');
         }
 
-        if(!filter_var($request->email, FILTER_VALIDATE_EMAIL)){
+        if (!filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
             throw new InvalidArgumentException('Invalid email');
         }
 

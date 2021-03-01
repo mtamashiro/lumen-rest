@@ -3,7 +3,6 @@
 
 namespace App\Api\Transaction\Controllers;
 
-
 use App\Api\Transaction\FormatResponse\TransactionFormatResponse;
 use App\Api\Transaction\Validations\TransactionRequestValidation;
 use App\Core\Http\Controllers\Controller;
@@ -21,6 +20,5 @@ class TransactionController extends Controller
         $response = $transactionAction->execute();
 
         return response()->json(TransactionFormatResponse::format($response), 201);
-
     }
 }

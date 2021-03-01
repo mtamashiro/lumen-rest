@@ -22,10 +22,10 @@ class AccountRequestValidation
             throw new AlreadyExist('Athis user already has an account');
         }
 
-        if(!is_numeric($request->amount) ){
+        if (!is_numeric($request->amount)) {
             throw new InvalidArgumentException('Incorrect value field format');
-        }else{
-            if($request->amount < 0){
+        } else {
+            if ($request->amount < 0) {
                 throw new InvalidArgumentException('Value must be greater than 0');
             }
         }
